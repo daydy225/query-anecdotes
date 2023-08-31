@@ -8,3 +8,7 @@
 <p>Implement adding new anecdotes to the server using React Query</p>
 <p>The application should render a new anecdote by default. Note that the content of the anecdote must be at least 5 characters long, otherwise the server will reject the POST request</p>
 <p>You don't have to worry about error handling now</p>
+
+## Exercises 6.22
+<p>Implement voting for anecdotes using again the React Query</p>
+<p>The application should automatically render the increased number of votes for the voted anecdote</p>
