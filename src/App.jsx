@@ -7,8 +7,7 @@ const App = () => {
   const { isLoading, isError, data } = useQuery({
     queryKey: ['anecdotes'],
     queryFn: fetchAnectodes,
-    // refetchOnWindowFocus: false,
-    retry: false,
+    retry: 1,
   })
 
   const handleVote = anecdote => {
@@ -18,14 +17,6 @@ const App = () => {
   console.log('anecdotes data', data)
 
   const anecdotes = data
-    ? data
-    : [
-        {
-          content: 'If it hurts, do it more often',
-          id: '47145',
-          votes: 0,
-        },
-      ]
 
   if (isLoading) {
     return <div>Loading...</div>
