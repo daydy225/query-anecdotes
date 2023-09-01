@@ -2,18 +2,32 @@ import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { fetchAnectodes, updateAnecdoteVote } from './requests'
+import { useNotification } from './NotificationContext'
 
 const App = () => {
   const queryClient = useQueryClient()
+  const { setNotification, clearNotification } = useNotification()
   const { isLoading, isError, data } = useQuery({
     queryKey: ['anecdotes'],
     queryFn: fetchAnectodes,
-    retry: 1,
+    retry: false,
+    refreshOnWindowFocus: false,
   })
 
   const updateAnecdoteVoteMutation = useMutation(updateAnecdoteVote, {
-    onSuccess: () => {
+    onSuccess: newAnecdote => {
       queryClient.invalidateQueries('anecdotes')
+      queryClient.setQueryData(
+        ['anecdotes', { id: newAnecdote.id }],
+        prevAnecdotes =>
+          prevAnecdotes?.map(anecdote =>
+            anecdote.id === newAnecdote.id ? newAnecdote : anecdote,
+          ),
+      )
+      setNotification(`anecdote '${newAnecdote.content}' voted`)
+      setTimeout(() => {
+        clearNotification()
+      }, 5000)
     },
   })
 

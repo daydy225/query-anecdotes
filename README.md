@@ -12,3 +12,7 @@
 ## Exercises 6.22
 <p>Implement voting for anecdotes using again the React Query</p>
 <p>The application should automatically render the increased number of votes for the voted anecdote</p>
+
+## Exercises 6.23
+<p>Implement the application's notification state management using the useReducer hook and context</p>
+<p>The notification should tell the user when a new anecdote is created or an anecdote is voted, The notification is displayed for five seconds</p>
