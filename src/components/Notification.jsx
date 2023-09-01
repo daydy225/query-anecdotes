@@ -10,7 +10,6 @@ const Notification = () => {
   // if (true) return null
 
   const { notification } = useNotification()
-  console.log('notification', notification)
 
   if (!notification) return null
 

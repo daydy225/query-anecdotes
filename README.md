@@ -16,3 +16,7 @@
 ## Exercises 6.23
 <p>Implement the application's notification state management using the useReducer hook and context</p>
 <p>The notification should tell the user when a new anecdote is created or an anecdote is voted, The notification is displayed for five seconds</p>
+
+## Exercises 6.24
+<p> implement error handling for the insertion. In practice, it is sufficient to display a notification to the user in case of a failed POST request</p>
+

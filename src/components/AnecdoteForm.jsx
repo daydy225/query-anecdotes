@@ -16,6 +16,12 @@ const AnecdoteForm = () => {
         clearNotification()
       }, 5000)
     },
+    onError: error => {
+      setNotification(error.message)
+      setTimeout(() => {
+        clearNotification()
+      }, 5000)
+    },
   })
 
   const { setNotification, clearNotification } = useNotification()
@@ -23,14 +29,6 @@ const AnecdoteForm = () => {
   const onCreate = event => {
     event.preventDefault()
     const content = event.target.anecdote.value
-    if (!content && content.length < 5) {
-      setNotification('anecdote content should be at least 5 characters long')
-      setTimeout(() => {
-        clearNotification()
-      }, 5000)
-      return
-    }
-
     event.target.anecdote.value = ''
     createAnecdoteMutation.mutate({ content, votes: 0 })
   }
